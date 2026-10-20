@@ -7,5 +7,6 @@
 int ftruncate(int fd, off_t length)
 {
 	/* TODO: Implement ftruncate(). */
-	return -1;
+	syscall(__NR_ftruncate, (unsigned int) fd, (unsigned long) length, 0, 0, 0, 0);
+	return 0;
 }
