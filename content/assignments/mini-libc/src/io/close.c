@@ -8,7 +8,7 @@
 int close(int fd)
 {
 	/* TODO: Implement close(). */
-	long ret = syscall(__NR_close, (unsigned int) fd, 0, 0, 0, 0, 0);
+	long ret = syscall(__NR_close, (long) fd, 0, 0, 0, 0, 0);
 
 	if (ret < 0) {
 		errno = -ret;

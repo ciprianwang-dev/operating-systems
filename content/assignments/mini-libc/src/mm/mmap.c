@@ -7,7 +7,13 @@
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 {
 	/* TODO: Implement mmap(). */
-	return MAP_FAILED;
+	long ret = syscall(__NR_mmap, (long) addr, (long) length, (long) prot, (long) flags, (long) fd, (long) offset);
+
+	if (ret < 0) {
+		errno = -ret;
+		return MAP_FAILED;
+	}
+	return addr;
 }
 
 void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
